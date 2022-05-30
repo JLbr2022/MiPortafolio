@@ -77,10 +77,11 @@ a {
 }
 
 .navigation a:hover {
-  background-color: rgb(152, 152, 152);
+  background-color: rgb(254, 181, 152);
+  box-shadow: .1em .1em #180e0c;
   color: #180e0c;
-  transition: all 0.4s linear;
-  border-radius: 10%;
+  transition: all 1.2s linear;
+  border-radius: .5em;
 }
 
 /* FOOTER */
