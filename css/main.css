@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -9,96 +10,163 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.header {
+  grid-area: header;
+  background-color: grey;
+}
+
+.foto {
+  grid-area: foto;
+  background-color: blue;
+}
+
+.content {
+  grid-area: content;
+  background-color: lightgreen;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: lightsalmon;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: grey;
+}
+
+/* PHONE RESOLUTION */
+
 .container {
   width: 90%;
-  /* max-width: 100em; */
   margin: 2em auto;
+  gap: 0em;
   display: grid;
-  gap: 1em;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "foto     header"
+    "content  content"
+    "sidebar  sidebar"
+    "footer   footer";
 }
 
-.container div,
-.container .header,
-.container .foto,
-.container .content,
 .container .sidebar,
+.container .header,
 .container .footer {
-  background: white;
-  padding: 2em;
-  border-radius: 6px;
-}
-
-.container .header {
-  background: grey;
-  color: white;
-  grid-column: 1/3;
-}
-
-.container .foto {
-  background: blue;
-  grid-column: 3;
-  grid-row-start: 1;
-  grid-row-end: 3;
-  max-height: auto;
   display: flex;
-  align-content: center;
-  justify-content: center;
-}
-
-.container .foto .ifoto {
-  position: relative;
-  max-height: 22.5em;
-  padding-bottom: 9em;
-  object-position: center;
-}
-
-.container .content {
-  background: rgb(179, 241, 179);
-  color: black;
-  grid-column: 1/3;
-  /* grid-column-end: 3; */
-}
-
-
-.container .sidebar {
-  background: orangered;
-  color: black;
-  margin-top: auto;
-  grid-column: 3;
-  grid-row: 2 / 3;
-  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-.container .footer {
-  background: grey;
-  grid-column: 1/-1;
+/* SIDEBAR */
+
+.navigation ul,
+li,
+a {
+  color: rgb(40, 40, 40);
+  list-style: none;
+  font-size: 1.1em;
+  text-decoration: none;
+  padding: 0.5em 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+  /* display: column-block; */
 }
 
-@media screen and (max-width: 768px) {
+.navigation a:hover {
+  background-color: rgb(152, 152, 152);
+  color: #180e0c;
+  transition: all 0.4s linear;
+  border-radius: 10%;
+}
 
+/* FOOTER */
+.container .footer {
+  height: 5em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: lightgray
+}
+
+/* FOTOGRAFIA */
+
+.container .foto .ifoto {
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  height: 7em;
+  /* width: 50; */
+}
+
+/* TABLET RESOLUTION */
+
+@media (min-width: 600px) {
   .container {
-    gap: 0em;
+    gap: .5em;
+    grid-template:
+      "header   header" 10em
+      "foto     sidebar" auto
+      "content  content" auto
+      "footer   footer" 10em;
+  }
+
+  .navigation ul,
+  li,
+  a {
+    color: rgb(40, 40, 40);
+    list-style: none;
+    font-size: 1.1em;
+    text-decoration: none;
+    padding: 0.5em 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* display: inline-block; */
+    /* display: column-block; */
+  }
+
+  .container .foto .ifoto {
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    height: 250px;
   }
 
   .container .header,
   .container .foto,
+  .container .foto .ifoto,
   .container .content,
   .container .sidebar,
   .container .footer {
-    grid-column: 1/-1;
-    grid-row: inherit;
+    border-radius: 0em;
+  }
+}
+
+/* DESKTOP RESOLUTION */
+
+@media (min-width: 950px) {
+  .container {
+    gap: 2em;
+    grid-template:
+      "header   foto" 10em
+      "content  foto" auto
+      "content  sidebar" auto
+      "footer   footer" 10em;
+  }
+
+  .container .header,
+  .container .foto,
+  .container .foto .ifoto,
+  .container .content,
+  .container .sidebar,
+  .container .footer {
+    border-radius: .5em;
   }
 
   .container .foto .ifoto {
-    box-sizing: border-box;
-    width: 580px;
-    height: 100px;
-    padding-top: 100px;
-    padding-bottom: 0em;
-    background: url("/images/HotelHirajaraBarquisimetoVenezuela580x120.png") no-repeat;
+    height: auto;
   }
 }
