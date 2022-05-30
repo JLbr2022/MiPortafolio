@@ -1,1 +1,3 @@
-# Ejercicio de responsividad con GRIDs
+# Proyecto: Mi Portafolio
+
+Aplicación de GRID con Responsividad
